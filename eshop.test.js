@@ -43,8 +43,8 @@ describe('demo_prego_ua', function() {
   it('example of fluent wait', async function() {
     await driver.get("https://prego.ua/uk/oplata")
     // correct verion of fluent wait
-    await driver.wait(until.elementsLocated(By.xpath("/html/body/div[3]/section/div[2]/div/div/div/div/div[7]/strong[1]"), 10000, 'Timed out after 10 seconds', 2000))
+    // await driver.wait(until.elementsLocated(By.xpath("/html/body/div[3]/section/div[2]/div/div/div/div/div[7]/strong[1]"), 10000, 'Timed out after 10 seconds', 2000))
     //incorrect version of fluent wait
-    // await driver.wait(until.elementsLocated(By.xpath("/html/body/div[3]/section/div[2]/div/div/div/div/div[22]"), 10000, 'Timed out after 10 seconds', 2000))
+    await driver.wait(until.elementsLocated(By.xpath("/html/body/div[3]/section/div[2]/div/div/div/div/div[22]"), 10000, 'Timed out after 10 seconds', 2000))
   })
 })
