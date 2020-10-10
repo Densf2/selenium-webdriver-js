@@ -21,14 +21,19 @@ describe('demo_prego_ua', function() {
   })
 
   it('example of explicit wiat', async function() {
+    // example of explicit wait in selenium test
     await driver.get("https://prego.ua/")
     await driver.manage().window().setRect(1440, 900)
     await driver.findElement(By.linkText("Наші магазини")).click()
+    // explicit wait added after the element from frontend
+    // the webdriver wait for the element
     await driver.findElement(By.css("div.shops__list-wrapper > div > div:nth-child(1)[data-city='м. Київ']"), 10000)
-    // assert(await driver.findElement(By.css("li.shops__cities-item--active")).getText() == "КИЇВ")
   })
 
   it('expmple of implict wait', async function() {
+    // implict wait added before the all test
+    // and timeout works for all elements for all operations below
+    // if element still invisible - the webdriver log the error
     await driver.manage().setTimeouts( { implicit: 10000} )
     await driver.get("https://prego.ua/")
     // example of checking the link without visit to 
@@ -43,8 +48,9 @@ describe('demo_prego_ua', function() {
   it('example of fluent wait', async function() {
     await driver.get("https://prego.ua/uk/oplata")
     // correct verion of fluent wait
-    // await driver.wait(until.elementsLocated(By.xpath("/html/body/div[3]/section/div[2]/div/div/div/div/div[7]/strong[1]"), 10000, 'Timed out after 10 seconds', 2000))
+    // the fluent wait used for one element
+    await driver.wait(until.elementsLocated(By.xpath("/html/body/div[3]/section/div[2]/div/div/div/div/div[7]/strong[1]"), 10000, 'Timed out after 10 seconds', 2000))
     //incorrect version of fluent wait
-    await driver.wait(until.elementsLocated(By.xpath("/html/body/div[3]/section/div[2]/div/div/div/div/div[22]"), 10000, 'Timed out after 10 seconds', 2000))
+    // await driver.wait(until.elementsLocated(By.xpath("/html/body/div[3]/section/div[2]/div/div/div/div/div[22]"), 10000, 'Timed out after 10 seconds', 2000))
   })
 })
