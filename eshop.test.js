@@ -1,10 +1,16 @@
 const { Builder, By, Key, until } = require('selenium-webdriver')
 const assert = require('assert')
 const { expect } = require('chai')
+require("mocha-allure-reporter")
+const log4js = require('log4js')
 
 describe('demo_prego_ua', function() {
   this.timeout(30000)
+const step = allure.createStep("initial", () => {})
+const logger = log4js.getLogger()
+logger.level = 'debug'
 
+  
   beforeEach(async function() {
     driver = await new Builder().forBrowser('firefox').build()
   })
@@ -18,6 +24,7 @@ describe('demo_prego_ua', function() {
     await driver.manage().window().setRect(1440, 900)
     await driver.executeScript("window.scrollTo(0,30)")
     await driver.findElement(By.css("div.sale-categories > a:nth-child(3)")).click()
+    logger.debug('Initial test passed')
   })
 
   it('example of explicit wiat', async function() {
@@ -26,6 +33,8 @@ describe('demo_prego_ua', function() {
     await driver.findElement(By.linkText("Наші магазини")).click()
     await driver.findElement(By.css("div.shops__list-wrapper > div > div:nth-child(1)[data-city='м. Київ']"), 10000)
     // assert(await driver.findElement(By.css("li.shops__cities-item--active")).getText() == "КИЇВ")
+    logger.debug('Exmple with explicit wait finished')
+    logger.info('Finished the first part of tests')
   })
 
   it('expmple of implict wait', async function() {
@@ -40,11 +49,11 @@ describe('demo_prego_ua', function() {
     expect(imgLink).to.equal("https://static.prego.ua/img?path=BlogPost&name=d988b341-0263-4dff-bb04-28f20c829282.jpg&w=480&h=300&q=80")
   })
 
-  it('example of fluent wait', async function() {
-    await driver.get("https://prego.ua/uk/oplata")
-    // correct verion of fluent wait
-    // await driver.wait(until.elementsLocated(By.xpath("/html/body/div[3]/section/div[2]/div/div/div/div/div[7]/strong[1]"), 10000, 'Timed out after 10 seconds', 2000))
-    //incorrect version of fluent wait
-    await driver.wait(until.elementsLocated(By.xpath("/html/body/div[3]/section/div[2]/div/div/div/div/div[22]"), 10000, 'Timed out after 10 seconds', 2000))
-  })
+  // it('example of fluent wait', async function() {
+  //   await driver.get("https://prego.ua/uk/oplata")
+  //   // correct verion of fluent wait
+  //   // await driver.wait(until.elementsLocated(By.xpath("/html/body/div[3]/section/div[2]/div/div/div/div/div[7]/strong[1]"), 10000, 'Timed out after 10 seconds', 2000))
+  //   //incorrect version of fluent wait
+  //   await driver.wait(until.elementsLocated(By.xpath("/html/body/div[3]/section/div[2]/div/div/div/div/div[22]"), 1000, 'Timed out after 10 seconds', 200))
+  // })
 })

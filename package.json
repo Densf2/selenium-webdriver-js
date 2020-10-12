@@ -1,7 +1,7 @@
 {
   "name": "demo_mocha",
   "version": "1.0.0",
-  "description": "",
+  "description": "test based on js mocha framework, use selenium webdriver",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
@@ -12,5 +12,12 @@
   "dependencies": {
     "chai": "^4.2.0",
     "selenium-webdriver": "^4.0.0-alpha.7"
+  },
+  "devDependencies": {
+    "allure-commandline": "^2.13.0",
+    "allure-mocha": "^2.0.0-beta.8",
+    "log4js": "^6.3.0",
+    "mocha": "^8.1.3",
+    "mocha-allure-reporter": "^1.4.0"
   }
 }
