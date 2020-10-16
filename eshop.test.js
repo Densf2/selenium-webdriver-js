@@ -35,6 +35,8 @@ logger.level = 'debug'
     // assert(await driver.findElement(By.css("li.shops__cities-item--active")).getText() == "КИЇВ")
     logger.debug('Exmple with explicit wait finished')
     logger.info('Finished the first part of tests')
+    logger.warn('test failed - example of explicit')
+    logger.error('The test scenario stopped due to internall error')
   })
 
   it('expmple of implict wait', async function() {
