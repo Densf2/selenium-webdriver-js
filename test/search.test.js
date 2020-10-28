@@ -35,6 +35,7 @@ describe('demo of serch at prego_ua', () => {
     const h2TextOnSearchPage = await driver.findElement(By.css(headinngTextOfSearchPage)).getText();
     expect(h2TextOnSearchPage).to.equal('НА ЧЕРЕВИКИ ЗАПИТ ЗНАЙДЕНО 3471 ЗБІГІВ');
     // open the first element in the search result list
+    // eslint-disable-next-line no-unused-vars
     const stuffCode = await driver.findElement(By.css('div._result:nth-child(1) div.name span')).getText();
   });
 
