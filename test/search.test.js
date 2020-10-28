@@ -1,8 +1,9 @@
+/* eslint-disable no-undef */
 const { Builder, By, Key } = require('selenium-webdriver');
 const { expect } = require('chai');
 const Search = require('../page/search-page');
 
-describe('demo of serch at prego_ua', function () {
+describe('demo of serch at prego_ua', () => {
   this.timeout(30000);
 
   // list of the selectors and text data
@@ -34,6 +35,7 @@ describe('demo of serch at prego_ua', function () {
     const h2TextOnSearchPage = await driver.findElement(By.css(headinngTextOfSearchPage)).getText();
     expect(h2TextOnSearchPage).to.equal('НА ЧЕРЕВИКИ ЗАПИТ ЗНАЙДЕНО 3471 ЗБІГІВ');
     // open the first element in the search result list
+    // eslint-disable-next-line no-unused-vars
     const stuffCode = await driver.findElement(By.css('div._result:nth-child(1) div.name span')).getText();
   });
 
