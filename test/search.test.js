@@ -1,8 +1,9 @@
+/* eslint-disable no-undef */
 const { Builder, By, Key } = require('selenium-webdriver');
 const { expect } = require('chai');
 const Search = require('../page/search-page');
 
-describe('demo of serch at prego_ua', function () {
+describe('demo of serch at prego_ua', () => {
   this.timeout(30000);
 
   // list of the selectors and text data
