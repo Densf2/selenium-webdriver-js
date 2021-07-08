@@ -23,7 +23,7 @@ describe('demo of serch at prego_ua', () => {
     await driver.manage().window().setRect(1440, 900);
   });
 
-  afterEach(async () => {
+  after(async () => {
     await driver.quit();
   });
 
